@@ -18,7 +18,7 @@ while true; do
 
   if [ "$this_song" != "$last_song" ]; then
     last_song=$this_song
-    echo curl -s -H "Content-Type: application/json" -X POST $ES_URL/_doc -d \
+    curl -s -H "Content-Type: application/json" -X POST $ES_URL/_doc -d \
       "{\"station\": \"$STATION_NAME\", \"time\": $(date +%s)000, \"song\": \"$this_song\", \"artist\": \"$this_artist\"}" \
       > /dev/null 2>&1
   fi
