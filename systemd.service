@@ -1,0 +1,15 @@
+# This is an example systemd unit file for running radioNowPlaying as a service to capture WERS.
+# Tweak as necessary for your favorite stations.
+
+[Unit]
+Description=Logs what's playing on WERS to Elasticsearch
+
+[Service]
+ExecStart=/usr/local/bin/radioNowPlaying.sh
+Environment=ES_URL=http://localhost:9200/radio
+Environment=STATION_NAME=WERS
+Environment=STATION_PROVIDER=tunegenie
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
